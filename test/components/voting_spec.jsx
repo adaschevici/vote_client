@@ -32,6 +32,6 @@ describe('Voting', () => {
 
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
     Simulate.click(buttons[0]);
-    expected(votedWith).to.equal('Trainspotting');
+    expect(votedWith).to.equal('Trainspotting');
 	});
 });

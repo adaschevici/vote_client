@@ -13,22 +13,25 @@ export class Voting extends React.Component {
     return !!this.props.hasVoted;
   }
 
-  get hasVotedFor(entry) {
+  hasVotedFor(entry) {
     return this.props.hasVoted === entry;
   }
 
   render() {
     return (
       <div className="voting">
-        {this.pair.map((entry) =>
-          <button key={entry}
-            disabled={this.isDisabled}
-            onClick={() => this.props.vote(entry)}
-          >
-            <h1>{entry}</h1>
-            {this.hasVotedFor(entry) ? <div className="label">Voted</div> : null}
-          </button>
-        )}
+        {this.props.winner ?
+          <div ref="winner">Winner is {this.props.winner}</div> :
+          this.pair.map((entry) =>
+            <button key={entry}
+              disabled={this.isDisabled}
+              onClick={() => this.props.vote(entry)}
+            >
+              <h1>{entry}</h1>
+              {this.hasVotedFor(entry) ? <div className="label">Voted</div> : null}
+            </button>
+          )
+        }
       </div>
     );
   }
