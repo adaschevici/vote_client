@@ -35,7 +35,7 @@ export class Voting extends React.Component {
       </div>
     );
   }
-};
+}
 
 Voting.propTypes = {
   pair: React.PropTypes.array,
