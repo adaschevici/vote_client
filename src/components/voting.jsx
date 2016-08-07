@@ -3,6 +3,7 @@ import React from 'react';
 export class Voting extends React.Component {
   constructor(props) {
     super(props);
+    this._onClick = () => this.props.vote;
   }
 
   get pair() {
@@ -23,12 +24,13 @@ export class Voting extends React.Component {
         {this.props.winner ?
           <div ref="winner">Winner is {this.props.winner}</div> :
           this.pair.map((entry) =>
-            <button key={entry}
+            <button
               disabled={this.isDisabled}
-              onClick={() => this.props.vote(entry)}
+              key={entry}
+              onClick={this._onClick(entry)}
             >
               <h1>{entry}</h1>
-              {this.hasVotedFor(entry) ? <div className="label">Voted</div> : null}
+              {this.hasVotedFor(entry) ? <div className="label">{'Voted'}</div> : null}
             </button>
           )
         }
@@ -38,6 +40,7 @@ export class Voting extends React.Component {
 }
 
 Voting.propTypes = {
+  winner: React.PropTypes.bool,
   pair: React.PropTypes.array,
   vote: React.PropTypes.func,
   hasVoted: React.bool,
