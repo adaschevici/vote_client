@@ -22,7 +22,7 @@ export class Voting extends React.Component {
     return (
       <div className="voting">
         {this.props.winner ?
-          <div ref="winner">Winner is {this.props.winner}</div> :
+          <div ref="winner">{'Winner is '} {this.props.winner}</div> :
           this.pair.map((entry) =>
             <button
               disabled={this.isDisabled}
