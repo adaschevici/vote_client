@@ -75,7 +75,7 @@ describe('Voting', () => {
   });
 
   it('renders a pure component', () => {
-    const pair = List.of('Trainspotting', '28 Days Later');
+    const pair = ['Trainspotting', '28 Days Later'];
     const container = document.createElement('div');
     let component = ReactDOM.render(
       <Voting pair={pair} />,
