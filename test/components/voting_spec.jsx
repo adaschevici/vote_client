@@ -23,7 +23,7 @@ describe('Voting', () => {
 
   });
 
-	it('invokes a callback when clicked', () => {
+  it('invokes a callback when clicked', () => {
     let votedWith;
     const vote = (entry) => votedWith = entry;
     const component = renderIntoDocument(
@@ -33,5 +33,5 @@ describe('Voting', () => {
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
     Simulate.click(buttons[0]);
     expect(votedWith).to.equal('Trainspotting');
-	});
+  });
 });

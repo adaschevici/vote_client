@@ -72,7 +72,8 @@
   },
   "parser": "babel-eslint",
   "plugins": [
-    "react"
+    "react",
+    "mocha"
     ],
     "globals": {
       "_": false,
