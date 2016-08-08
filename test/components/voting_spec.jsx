@@ -1,3 +1,4 @@
+import { List } from 'immutable';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import {
@@ -59,5 +60,36 @@ describe('Voting', () => {
     );
     const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
     expect(buttons[0].textContent).to.contain('Voted');
+  });
+
+  it('renders just the winner when there is one', () => {
+    const component = renderIntoDocument(
+      <Voting winner="Trainspotting" />
+    );
+    const buttons = scryRenderedDOMComponentsWithTag(component, 'button');
+    expect(buttons.length).to.equal(0);
+
+    const winner = ReactDOM.findDOMNode(component.refs.winner);
+    expect(winner).to.be.ok;
+    expect(winner.textContent).to.contain('Trainspotting');
+  });
+
+  it('renders a pure component', () => {
+    const pair = List.of('Trainspotting', '28 Days Later');
+    const container = document.createElement('div');
+    let component = ReactDOM.render(
+      <Voting pair={pair} />,
+      container
+    );
+
+    let firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
+    expect(firstButton.textContent).to.equal('Trainspotting');
+    pair[0] = 'Sunshine';
+    component = ReactDOM.render(
+      <Voting pair={pair} />,
+      container
+    );
+    firstButton = scryRenderedDOMComponentsWithTag(component, 'button')[0];
+    expect(firstButton.textContent).to.equal('Trainspotting');
   });
 });
