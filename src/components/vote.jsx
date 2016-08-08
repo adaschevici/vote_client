@@ -3,7 +3,7 @@ import React from 'react';
 export class Vote extends React.Component {
   constructor(props) {
     super(props);
-    this._onClick = () => this.props.vote;
+    // this._onClick = () => this.props.vote;
   }
 
   get pair() {
@@ -24,7 +24,7 @@ export class Vote extends React.Component {
         {this.pair.map((entry) =>
           <button disabled={this.isDisabled}
             key={entry}
-            onClick={this._onClick(entry)}
+            onClick={() => this.props.vote(entry)}
           >
             <h1>{entry}</h1>
             {this.hasVotedFor(entry) ?
