@@ -1,6 +1,6 @@
 import React from 'react';
-import Winner from './winner';
-import Vote from './vote';
+import Winner from './winner.jsx';
+import Vote from './vote.jsx';
 
 export class Voting extends React.Component {
   constructor(props) {
