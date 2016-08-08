@@ -3,7 +3,6 @@ import React from 'react';
 export class Vote extends React.Component {
   constructor(props) {
     super(props);
-    // this._onClick = () => this.props.vote;
   }
 
   get pair() {
@@ -28,7 +27,7 @@ export class Vote extends React.Component {
           >
             <h1>{entry}</h1>
             {this.hasVotedFor(entry) ?
-              <div className="label">Voted</div> :
+              <div className="label">{'Voted'}</div> :
               null}
           </button>
         )}
@@ -40,6 +39,6 @@ export class Vote extends React.Component {
 
 Vote.propTypes = {
   pair: React.PropTypes.array,
-  hasVoted: React.PropTypes.bool,
+  hasVoted: React.PropTypes.string,
   vote: React.PropTypes.func,
 };
